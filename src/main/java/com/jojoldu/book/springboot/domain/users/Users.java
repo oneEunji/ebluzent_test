@@ -28,6 +28,9 @@ public class Users extends BaseTimeEntity {
     private String userPassword;
 
     @Column(nullable = false)
+    private String ssaId;
+
+    @Column(nullable = false)
     private String userDept;
 
     @Column(nullable = false)
@@ -38,11 +41,12 @@ public class Users extends BaseTimeEntity {
 
     @Builder
     public Users(String userName, String userEmail, String userPassword,
-                    String userDept, String userPosition, int companyId) {
+                 String ssaId,String userDept, String userPosition, int companyId) {
 
             this.userName = userName;
             this.userEmail = userEmail;
             this.userPassword = userPassword;
+            this.ssaId = ssaId;
             this.userDept = userDept;
             this.userPosition = userPosition;
             this.companyId = companyId;
@@ -50,15 +54,17 @@ public class Users extends BaseTimeEntity {
     }
 
     public Users update(String userName, String userEmail, String userPassword,
-                       String userDept, String userPosition, int companyId) {
+                        String ssaId, String userDept, String userPosition, int companyId) {
 
         this.userName = userName;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
+        this.ssaId = ssaId;
         this.userDept = userDept;
         this.userPosition = userPosition;
         this.companyId = companyId;
-        
+
+
         return this;
     }
 }

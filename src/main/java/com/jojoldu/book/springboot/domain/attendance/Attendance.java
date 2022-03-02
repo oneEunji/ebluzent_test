@@ -18,7 +18,7 @@ public class Attendance extends BaseTimeEntity {
     private Long attendanceId;
 
     @Column(length = 500, nullable = false)
-    private Long id;
+    private Long userNoId;
 
     @Column(length = 500, nullable = false)
     private Long deptId;
@@ -51,9 +51,9 @@ public class Attendance extends BaseTimeEntity {
     private Double attendanceAddressHardness;
 
     @Builder
-    public Attendance(Long id, String attendanceOX, Date attendanceDate, String attendanceTimeEnd, String attendanceTimeStart,
+    public Attendance(Long userNoId, String attendanceOX, Date attendanceDate, String attendanceTimeEnd, String attendanceTimeStart,
                       String attendanceTimeHours, Double attendanceAddressLatitude, Double attendanceAddressHardness){
-        this.id = id;
+        this.userNoId = userNoId;
         this.attendanceOX = attendanceOX;
         this.attendanceDate = attendanceDate;
         this.attendanceTimeEnd = attendanceTimeEnd;
@@ -63,9 +63,9 @@ public class Attendance extends BaseTimeEntity {
         this.attendanceAddressHardness = attendanceAddressHardness;
     }
 
-    public void update(Long id,String attendanceOX,Date attendanceDate,String attendanceTimeEnd,String attendanceTimeStart,
+    public void update(Long userNoId,String attendanceOX,Date attendanceDate,String attendanceTimeEnd,String attendanceTimeStart,
                        String attendanceTimeHours,Double attendanceAddressLatitude,Double attendanceAddressHardness){
-        this.id = id;
+        this.userNoId = userNoId;
         this.attendanceOX = attendanceOX;
         this.attendanceDate = attendanceDate;
         this.attendanceTimeEnd = attendanceTimeEnd;

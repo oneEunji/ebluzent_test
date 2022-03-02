@@ -26,31 +26,31 @@ public class AttendanceService {
 
     @Transactional
     public Long save(AttendanceSaveRequestDto requestDto) {
-        return attendanceRepository.save(requestDto.toEntity()).getId();
+        return attendanceRepository.save(requestDto.toEntity()).getAttendanceId();
     }
 
     @Transactional
-    public Long update(Long id, AttendanceUpdateRequestDto requestDto) {
-        Attendance attendance = attendanceRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
+    public Long update(Long attendanceId, AttendanceUpdateRequestDto requestDto) {
+        Attendance attendance = attendanceRepository.findById(attendanceId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 순번이 없습니다. no=" + attendanceId));
 
 //        attendance.update(requestDto.getAttendanceOX());
 
-        return id;
+        return attendanceId;
     }
 
     @Transactional
-    public void delete (Long id) {
-        Attendance attendance = attendanceRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
+    public void delete (Long attendanceId) {
+        Attendance attendance = attendanceRepository.findById(attendanceId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 순번이 없습니다. no=" + attendanceId));
 
         attendanceRepository.delete(attendance);
     }
 
     @Transactional(readOnly = true)
-    public AttendanceResponseDto findById(Long id) {
-        Attendance entity = attendanceRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
+    public AttendanceResponseDto findById(Long attendanceId) {
+        Attendance entity = attendanceRepository.findById(attendanceId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 순번이 없습니다. no=" + attendanceId));
 
         return new AttendanceResponseDto(entity);
     }
