@@ -1,7 +1,6 @@
 package com.jojoldu.book.springboot.web.dto.attendance;
 
 import com.jojoldu.book.springboot.domain.attendance.Attendance;
-import com.jojoldu.book.springboot.domain.company.Company;
 import lombok.Getter;
 
 import java.sql.Date;
@@ -18,8 +17,8 @@ public class AttendanceResponseDto {
     private String attendanceTimeEnd;
     private String attendanceTimeStart;
     private String attendanceTimeHours;
-    private Double attendanceAdressLatitude;
-    private Double attendanceAdressHardness;
+    private Double attendanceAddressLatitude;
+    private Double attendanceAddressHardness;
 
     public AttendanceResponseDto(Attendance entity) {
         this.id = entity.getId();
@@ -31,7 +30,7 @@ public class AttendanceResponseDto {
         this.attendanceTimeEnd = entity.getAttendanceTimeEnd();
         this.attendanceTimeStart = entity.getAttendanceTimeStart();
         this.attendanceTimeHours = entity.getAttendanceTimeHours();
-        this.attendanceAdressLatitude = entity.getAttendanceAdressLatitude();
-        this.attendanceAdressHardness = entity.getAttendanceAdressHardness();
+        this.attendanceAddressLatitude = entity.getAttendanceAddressLatitude();
+        this.attendanceAddressHardness = entity.getAttendanceAddressHardness();
     }
 }

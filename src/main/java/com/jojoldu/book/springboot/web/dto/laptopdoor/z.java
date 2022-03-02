@@ -11,7 +11,7 @@
 //
 //public class LaptopdoorSaveRequestDto {
 //    private Long userNoId;
-//    private String SSAID;
+//    private String ssaId;
 //    private Long deptId;
 //    private Long companyBranchID;
 //    private Long companyId;
@@ -19,11 +19,11 @@
 //    private Long doorOpen;
 //
 //    @Builder
-//    public LaptopdoorUpdateRequestDto(Long laptopDoorId, Long userNoID, String SSAID, Long deptId, Long companyBranchID,
+//    public LaptopdoorUpdateRequestDto(Long laptopDoorId, Long userNoId, String ssaId, Long deptId, Long companyBranchID,
 //                                      Long companyId, Date doorOpenTime, Long doorOpen) {
 //        this.laptopDoorId = laptopDoorId;
-//        this.userNoID = userNoID;
-//        this.SSAID = SSAID;
+//        this.userNoId = userNoId;
+//        this.ssaId = ssaId;
 //        this.deptId = deptId;
 //        this.companyBranchID = companyBranchID;
 //        this.companyId = companyId;

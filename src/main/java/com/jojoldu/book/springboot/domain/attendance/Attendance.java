@@ -45,34 +45,34 @@ public class Attendance extends BaseTimeEntity {
     private String attendanceTimeHours;
 
     @Column(length = 500, nullable = false)
-    private Double attendanceAdressLatitude;
+    private Double attendanceAddressLatitude;
 
     @Column(length = 500, nullable = false)
-    private Double attendanceAdressHardness;
+    private Double attendanceAddressHardness;
 
     @Builder
-    public Attendance(Long id,String attendanceOX,Date attendanceDate,String attendanceTimeEnd,String attendanceTimeStart,
-                      String attendanceTimeHours,Double attendanceAdressLatitude,Double attendanceAdressHardness){
+    public Attendance(Long id, String attendanceOX, Date attendanceDate, String attendanceTimeEnd, String attendanceTimeStart,
+                      String attendanceTimeHours, Double attendanceAddressLatitude, Double attendanceAddressHardness){
         this.id = id;
         this.attendanceOX = attendanceOX;
         this.attendanceDate = attendanceDate;
         this.attendanceTimeEnd = attendanceTimeEnd;
         this.attendanceTimeStart = attendanceTimeStart;
         this.attendanceTimeHours = attendanceTimeHours;
-        this.attendanceAdressLatitude = attendanceAdressLatitude;
-        this.attendanceAdressHardness = attendanceAdressHardness;
+        this.attendanceAddressLatitude = attendanceAddressLatitude;
+        this.attendanceAddressHardness = attendanceAddressHardness;
     }
 
     public void update(Long id,String attendanceOX,Date attendanceDate,String attendanceTimeEnd,String attendanceTimeStart,
-                       String attendanceTimeHours,Double attendanceAdressLatitude,Double attendanceAdressHardness){
+                       String attendanceTimeHours,Double attendanceAddressLatitude,Double attendanceAddressHardness){
         this.id = id;
         this.attendanceOX = attendanceOX;
         this.attendanceDate = attendanceDate;
         this.attendanceTimeEnd = attendanceTimeEnd;
         this.attendanceTimeStart = attendanceTimeStart;
         this.attendanceTimeHours = attendanceTimeHours;
-        this.attendanceAdressLatitude = attendanceAdressLatitude;
-        this.attendanceAdressHardness = attendanceAdressHardness;
+        this.attendanceAddressLatitude = attendanceAddressLatitude;
+        this.attendanceAddressHardness = attendanceAddressHardness;
 
     }
 }

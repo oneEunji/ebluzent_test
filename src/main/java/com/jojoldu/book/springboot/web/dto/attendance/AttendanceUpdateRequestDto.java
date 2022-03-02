@@ -18,13 +18,13 @@ public class AttendanceUpdateRequestDto {
     private String attendanceTimeEnd;
     private String attendanceTimeStart;
     private String attendanceTimeHours;
-    private Double attendanceAdressLatitude;
-    private Double attendanceAdressHardness;
+    private Double attendanceAddressLatitude;
+    private Double attendanceAddressHardness;
 
     @Builder
     public AttendanceUpdateRequestDto(Long id, Long deptId, Long companyBranchId, Long companyId,
                                       String attendanceOX, Date attendanceDate, String attendanceTimeEnd, String attendanceTimeStart,
-                                      String attendanceTimeHours, Double attendanceAdressLatitude, Double attendanceAdressHardness) {
+                                      String attendanceTimeHours, Double attendanceAddressLatitude, Double attendanceAddressHardness) {
         this.id =  id;
         this.deptId =  deptId;
         this.companyBranchId = companyBranchId;
@@ -34,7 +34,7 @@ public class AttendanceUpdateRequestDto {
         this.attendanceTimeEnd =  attendanceTimeEnd;
         this.attendanceTimeStart = attendanceTimeStart;
         this.attendanceTimeHours = attendanceTimeHours;
-        this.attendanceAdressLatitude = attendanceAdressLatitude;
-        this.attendanceAdressHardness = attendanceAdressHardness;
+        this.attendanceAddressLatitude = attendanceAddressLatitude;
+        this.attendanceAddressHardness = attendanceAddressHardness;
     }
 }

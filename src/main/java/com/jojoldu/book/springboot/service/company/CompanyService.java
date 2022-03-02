@@ -26,7 +26,7 @@ public class CompanyService {
     @Transactional
     public Long update(Long companyId, CompanyUpdateRequestDto requestDto) {
         Company company = companyRepository.findById(companyId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 회사번호가 없습니다. id=" + companyId));
+                .orElseThrow(() -> new IllegalArgumentException("해당 회사번호가 없습니다. companyId=" + companyId));
 
         company.update(requestDto.getCompanyName());
 
@@ -36,7 +36,7 @@ public class CompanyService {
     @Transactional
     public void delete (Long companyId) {
         Company company = companyRepository.findById(companyId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 회사번호가 없습니다. id=" + companyId));
+                .orElseThrow(() -> new IllegalArgumentException("해당 회사번호가 없습니다. companyId=" + companyId));
 
         companyRepository.delete(company);
     }
@@ -44,7 +44,7 @@ public class CompanyService {
     @Transactional(readOnly = true)
     public CompanyResponseDto findById(Long companyId) {
         Company entity = companyRepository.findById(companyId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 회사번호가 없습니다. id=" + companyId));
+                .orElseThrow(() -> new IllegalArgumentException("해당 회사번호가 없습니다. companyId=" + companyId));
 
         return new CompanyResponseDto(entity);
     }

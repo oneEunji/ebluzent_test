@@ -21,14 +21,14 @@ public class AttendanceSaveRequestDto {
     private String attendanceTimeEnd;
     private String attendanceTimeStart;
     private String attendanceTimeHours;
-    private Double attendanceAdressLatitude;
-    private Double attendanceAdressHardness;
+    private Double attendanceAddressLatitude;
+    private Double attendanceAddressHardness;
 
 
     @Builder
     public AttendanceSaveRequestDto(Long id, Long deptId, Long companyBranchId, Long companyId,
                                     String attendanceOX, Date attendanceDate, String attendanceTimeEnd, String attendanceTimeStart,
-                                    String attendanceTimeHours, Double attendanceAdressLatitude, Double attendanceAdressHardness) {
+                                    String attendanceTimeHours, Double attendanceAddressLatitude, Double attendanceAddressHardness) {
         this.id =  id;
         this.deptId =  deptId;
         this.companyBranchId = companyBranchId;
@@ -38,8 +38,8 @@ public class AttendanceSaveRequestDto {
         this.attendanceTimeEnd =  attendanceTimeEnd;
         this.attendanceTimeStart = attendanceTimeStart;
         this.attendanceTimeHours = attendanceTimeHours;
-        this.attendanceAdressLatitude = attendanceAdressLatitude;
-        this.attendanceAdressHardness = attendanceAdressHardness;
+        this.attendanceAddressLatitude = attendanceAddressLatitude;
+        this.attendanceAddressHardness = attendanceAddressHardness;
 
     }
 
@@ -51,8 +51,8 @@ public class AttendanceSaveRequestDto {
                 .attendanceTimeEnd(attendanceTimeEnd)
                 .attendanceTimeStart(attendanceTimeStart)
                 .attendanceTimeHours(attendanceTimeHours)
-                .attendanceAdressLatitude(attendanceAdressLatitude)
-                .attendanceAdressHardness(attendanceAdressHardness)
+                .attendanceAddressLatitude(attendanceAddressLatitude)
+                .attendanceAddressHardness(attendanceAddressHardness)
                 .build();
     }
 

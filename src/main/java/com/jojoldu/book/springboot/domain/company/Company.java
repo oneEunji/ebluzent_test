@@ -1,6 +1,5 @@
 package com.jojoldu.book.springboot.domain.company;
 
-import com.jojoldu.book.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Company extends BaseTimeEntity {
+public class Company{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,13 +18,22 @@ public class Company extends BaseTimeEntity {
     @Column(length = 500, nullable = false)
     private String companyName;
 
+    @Column(length = 500, nullable = false)
+    private Double companyAddressLatitude;
+
+    @Column(length = 500, nullable = false)
+    private Double companyAddressHardness;
 
     @Builder
-    public Company(String companyName) {
+    public Company(String companyName, Double companyAddressLatitude, Double companyAddressHardness) {
         this.companyName = companyName;
+        this.companyAddressLatitude = companyAddressLatitude;
+        this.companyAddressHardness = companyAddressHardness;
     }
 
-    public void update(String companyName) {
+    public void update(String companyName, Double companyAddressLatitude, Double companyAddressHardness) {
         this.companyName = companyName;
+        this.companyAddressLatitude = companyAddressLatitude;
+        this.companyAddressHardness = companyAddressHardness;
     }
 }
