@@ -18,10 +18,10 @@ public class Company{
     @Column(length = 500, nullable = false)
     private String companyName;
 
-    @Column(length = 500, nullable = false)
+    @Column(nullable = false)
     private Double companyAddressLatitude;
 
-    @Column(length = 500, nullable = false)
+    @Column(nullable = false)
     private Double companyAddressHardness;
 
     @Builder

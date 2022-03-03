@@ -103,11 +103,14 @@ public class CompanyApiControllerTest {
         //then
         List<Company> all = companyRepository.findAll();
         assertThat(all.get(0).getCompanyName()).isEqualTo(companyName);
+        assertThat(all.get(0).getCompanyAddressLatitude()).isEqualTo(1.1);
+        assertThat(all.get(0).getCompanyAddressHardness()).isEqualTo(2.2);
     }
 
     @Test
-//    @WithMockUser(roles="USER")
+    @WithMockUser(roles="USER")
     public void Company_update() throws Exception {
+
         //given
         Company savedCompany;
         savedCompany = companyRepository.save(Company.builder()
@@ -116,12 +119,14 @@ public class CompanyApiControllerTest {
                 .companyAddressHardness(2.2)
                 .build());
 
-
         Long updateId = savedCompany.getCompanyId();
 
         String companyName = "companyName";
         Double companyAddressLatitude = 1.1;
         Double companyAddressHardness = 2.2;
+
+
+
 
         CompanyUpdateRequestDto requestDto;
         requestDto = CompanyUpdateRequestDto.builder()
@@ -149,6 +154,6 @@ public class CompanyApiControllerTest {
         List<Company> all = companyRepository.findAll();
         assertThat(all.get(0).getCompanyName()).isEqualTo(companyName);
         assertThat(all.get(0).getCompanyAddressLatitude()).isEqualTo(1.1);
-        assertThat(all.get(0).getCompanyAddressHardness()).isEqualTo(1.1);
+        assertThat(all.get(0).getCompanyAddressHardness()).isEqualTo(2.2);
     }
 }
