@@ -28,7 +28,7 @@ public class CompanyService {
         Company company = companyRepository.findById(companyId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 회사번호가 없습니다. companyId=" + companyId));
 
-        company.update(requestDto.getCompanyName());
+        company.update(requestDto.getCompanyName(),requestDto.getCompanyAddressLatitude(),requestDto.getCompanyAddressHardness());
 
         return companyId;
     }

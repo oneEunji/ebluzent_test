@@ -16,27 +16,29 @@ public class CompanyApiController {
 
     private final CompanyService companyService;
 
-    @PostMapping("/api/v1/company")
+    @PostMapping("/company")
     public Long save(@RequestBody CompanySaveRequestDto requestDto) {
         return companyService.save(requestDto);
     }
 
-    @PutMapping("/api/v1/company/{companyId}")
+    @PutMapping("/company/{companyId}")
     public Long update(@PathVariable Long companyId, @RequestBody CompanyUpdateRequestDto requestDto) {
         return companyService.update(companyId, requestDto);
     }
-    @DeleteMapping("/api/v1/company/{companyId}")
+    @DeleteMapping("/company/{companyId}")
     public Long delete(@PathVariable Long companyId) {
         companyService.delete(companyId);
         return companyId;
     }
 
-    @GetMapping("/api/v1/company/{companyId}")
+//    @GetMapping("/api/v1/company/{companyId}")
+    @GetMapping("/company/{companyId}")
     public CompanyResponseDto findById(@PathVariable Long companyId) {
         return companyService.findById(companyId);
     }
 
-    @GetMapping("/api/v1/company/list")
+//    @GetMapping("/api/v1/company/list")
+    @GetMapping("/company/list")
     public List<CompanyListResponseDto> findAll() {
         return companyService.findAllDesc();
     }

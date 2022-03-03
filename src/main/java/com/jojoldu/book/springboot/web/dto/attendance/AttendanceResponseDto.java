@@ -8,7 +8,7 @@ import java.sql.Date;
 @Getter
 public class AttendanceResponseDto {
 
-    private Long id;
+    private Long userNoId;
     private Long deptId;
     private Long companyBranchId;
     private Long companyId;
@@ -21,7 +21,7 @@ public class AttendanceResponseDto {
     private Double attendanceAddressHardness;
 
     public AttendanceResponseDto(Attendance entity) {
-        this.id = entity.getId();
+        this.userNoId = entity.getUserNoId();
         this.deptId = entity.getDeptId();
         this.companyBranchId = entity.getCompanyBranchId();
         this.companyId = entity.getCompanyId();

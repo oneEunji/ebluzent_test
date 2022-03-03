@@ -12,7 +12,7 @@ import java.sql.Date;
 @NoArgsConstructor
 public class AttendanceSaveRequestDto {
 
-    private Long id;
+    private Long userNoId;
     private Long deptId;
     private Long companyBranchId;
     private Long companyId;
@@ -26,10 +26,10 @@ public class AttendanceSaveRequestDto {
 
 
     @Builder
-    public AttendanceSaveRequestDto(Long id, Long deptId, Long companyBranchId, Long companyId,
+    public AttendanceSaveRequestDto(Long userNoId, Long deptId, Long companyBranchId, Long companyId,
                                     String attendanceOX, Date attendanceDate, String attendanceTimeEnd, String attendanceTimeStart,
                                     String attendanceTimeHours, Double attendanceAddressLatitude, Double attendanceAddressHardness) {
-        this.id =  id;
+        this.userNoId =  userNoId;
         this.deptId =  deptId;
         this.companyBranchId = companyBranchId;
         this.companyId = companyId;
@@ -45,7 +45,7 @@ public class AttendanceSaveRequestDto {
 
     public Attendance toEntity() {
         return Attendance.builder()
-                .id(id)
+                .userNoId(userNoId)
                 .attendanceOX(attendanceOX)
                 .attendanceDate(attendanceDate)
                 .attendanceTimeEnd(attendanceTimeEnd)
