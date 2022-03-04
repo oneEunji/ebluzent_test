@@ -13,6 +13,7 @@ public class Company{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Long companyId;
 
     @Column(length = 500, nullable = false)

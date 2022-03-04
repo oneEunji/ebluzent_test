@@ -3,6 +3,10 @@
 //import com.fasterxml.jackson.databind.ObjectMapper;
 //import com.jojoldu.book.springboot.domain.attendance.Attendance;
 //import com.jojoldu.book.springboot.domain.attendance.AttendanceRepository;
+//import com.jojoldu.book.springboot.domain.posts.Posts;
+//import com.jojoldu.book.springboot.domain.posts.PostsRepository;
+//import com.jojoldu.book.springboot.web.dto.PostsSaveRequestDto;
+//import com.jojoldu.book.springboot.web.dto.PostsUpdateRequestDto;
 //import com.jojoldu.book.springboot.web.dto.attendance.AttendanceSaveRequestDto;
 //import com.jojoldu.book.springboot.web.dto.attendance.AttendanceUpdateRequestDto;
 //import org.junit.After;
@@ -20,6 +24,7 @@
 //import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 //import org.springframework.web.context.WebApplicationContext;
 //
+//import java.sql.Date;
 //import java.util.List;
 //
 //import static org.assertj.core.api.Assertions.assertThat;
@@ -28,7 +33,6 @@
 //import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 //import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 //
-//// For mockMvc
 //
 //@RunWith(SpringRunner.class)
 //@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -41,7 +45,7 @@
 //    private TestRestTemplate restTemplate;
 //
 //    @Autowired
-//    private AttendanceRepository attendanceRepository;
+//    private AttendanceRepository attendancRepository;
 //
 //    @Autowired
 //    private WebApplicationContext context;
@@ -58,71 +62,119 @@
 //
 //    @After
 //    public void tearDown() throws Exception {
-//        attendanceRepository.deleteAll();
+//        attendancRepository.deleteAll();
 //    }
 //
 //    @Test
-//    @WithMockUser(roles="USER")
+//    @WithMockUser(roles = "USER")
 //    public void Attendance_등록된다() throws Exception {
 //        //given
-//        String title = "title";
-//        String content = "content";
+//        Long userNoId = null;
+//        Long deptId = null;
+//        Long companyBranchId = null;
+//        Long companyId = null;
+//        String attendanceOX = "attendanceOX";
+//        Date attendanceDate = null;
+//        String attendanceTimeEnd = "attendanceTimeEnd";
+//        String attendanceTimeStart = "attendanceTimeStart";
+//        String attendanceTimeHours = "attendanceTimeHours";
+//        Double attendanceAddressLatitude = 1.1;
+//        Double attendanceAddressHardness = 2.1;
+//
 //        AttendanceSaveRequestDto requestDto = AttendanceSaveRequestDto.builder()
-//                .title(title)
-//                .content(content)
-//                .author("author")
-//                .build();
-//
-//        String url = "http://localhost:" + port + "/api/v1/posts";
-//
-//        //when
-//        mvc.perform(post(url)
-//                .contentType(MediaType.APPLICATION_JSON_UTF8)
-//                .content(new ObjectMapper().writeValueAsString(requestDto)))
-//                .andExpect(status().isOk());
-//
-//        //then
-//        List<Attendance> all = attendanceRepository.findAll();
-//        assertThat(all.get(0).getTitle()).isEqualTo(title);
-//        assertThat(all.get(0).getContent()).isEqualTo(content);
-//    }
-//
-//    @Test
-//    @WithMockUser(roles="USER")
-//    public void Attendance_수정된다() throws Exception {
-//        //given
-//        Attendance savedAttendance = attendanceRepository.save(Attendance.builder()
-//                .title("title")
-//                .content("content")
-//                .author("author")
-//                .build());
-//
-//        Long updateId = savedAttendance.getId();
-//        String expectedTitle = "title2";
-//        String expectedContent = "content2";
-//
-//        AttendanceUpdateRequestDto requestDto = AttendanceUpdateRequestDto.builder()
-//                .id(id)
+//                .userNoId(userNoId)
+//                .deptId(deptId)
+//                .companyBranchId(companyBranchId)
+//                .companyId(companyId)
 //                .attendanceOX(attendanceOX)
 //                .attendanceDate(attendanceDate)
 //                .attendanceTimeEnd(attendanceTimeEnd)
+//                .attendanceTimeEnd(attendanceTimeEnd)
 //                .attendanceTimeStart(attendanceTimeStart)
 //                .attendanceTimeHours(attendanceTimeHours)
-//                .attendanceAdressLatitude(attendanceAdressLatitude)
-//                .attendanceAdressHardness(attendanceAdressHardness)
+//                .attendanceAddressLatitude(attendanceAddressLatitude)
+//                .attendanceAddressHardness(attendanceAddressHardness)
 //                .build();
 //
-//        String url = "http://localhost:" + port + "/api/v1/attendance/" + updateId;
+//        String url = "http://localhost:" + port + "/api/v1/attendance";
 //
 //        //when
-//        mvc.perform(put(url)
-//                .contentType(MediaType.APPLICATION_JSON_UTF8)
-//                .content(new ObjectMapper().writeValueAsString(requestDto)))
+//        mvc.perform(post(url)
+//                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+//                        .content(new ObjectMapper().writeValueAsString(requestDto)))
 //                .andExpect(status().isOk());
 //
 //        //then
-//        List<Attendance> all = attendanceRepository.findAll();
-//        assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle);
-//        assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
+//        List<Attendance> all = attendancRepository.findAll();
+//        assertThat(all.get(0).getUserNoId()).isEqualTo(userNoId);
+//        assertThat(all.get(0).getDeptId()).isEqualTo(deptId);
+//        assertThat(all.get(0).getCompanyBranchId()).isEqualTo(companyBranchId);
+//        assertThat(all.get(0).getCompanyId()).isEqualTo(companyId);
+//        assertThat(all.get(0).getAttendanceOX()).isEqualTo(attendanceOX);
+//        assertThat(all.get(0).getAttendanceDate()).isEqualTo(attendanceDate);
+//        assertThat(all.get(0).getAttendanceTimeEnd()).isEqualTo(attendanceTimeEnd);
+//        assertThat(all.get(0).getAttendanceTimeStart()).isEqualTo(attendanceTimeStart);
+//        assertThat(all.get(0).getAttendanceTimeHours()).isEqualTo(attendanceTimeHours);
+//        assertThat(all.get(0).getAttendanceAddressLatitude()).isEqualTo(attendanceAddressLatitude);
+//        assertThat(all.get(0).getAttendanceAddressHardness()).isEqualTo(attendanceAddressHardness);
 //    }
+//
+////    @Test
+////    @WithMockUser(roles = "USER")
+////    public void Attendance_수정된다() throws Exception {
+////        //given
+////        Attendance savedAttendance = attendancRepository.save(Attendance.builder()
+////                .userNoId(null)
+////                .attendanceOX("attendanceOX")
+////                .attendanceDate(null)
+////                .attendanceTimeEnd("attendanceTimeEnd")
+////                .attendanceTimeEnd("attendanceTimeEnd")
+////                .attendanceTimeStart("attendanceTimeStart")
+////                .attendanceTimeHours("attendanceTimeHours")
+////                .attendanceAddressLatitude(1.1)
+////                .attendanceAddressHardness(2.1)
+////                .build());
+////
+////        Long updateId = savedAttendance.getAttendanceId();
+////        //given
+////        Long userNoId = null;
+////        String attendanceOX = "attendanceOX";
+////        Date attendanceDate = null;
+////        String attendanceTimeEnd = "attendanceTimeEnd";
+////        String attendanceTimeStart = "attendanceTimeStart";
+////        String attendanceTimeHours = "attendanceTimeHours";
+////        Double attendanceAddressLatitude = 1.1;
+////        Double attendanceAddressHardness = 2.1;
+////
+////        AttendanceUpdateRequestDto requestDto = AttendanceUpdateRequestDto.builder()
+////                .userNoId(userNoId)
+////                .attendanceOX(attendanceOX)
+////                .attendanceDate(attendanceDate)
+////                .attendanceTimeEnd(attendanceTimeEnd)
+////                .attendanceTimeEnd(attendanceTimeEnd)
+////                .attendanceTimeStart(attendanceTimeStart)
+////                .attendanceTimeHours(attendanceTimeHours)
+////                .attendanceAddressLatitude(attendanceAddressLatitude)
+////                .attendanceAddressHardness(attendanceAddressHardness)
+////                .build();
+////
+////        String url = "http://localhost:" + port + "/api/v1/posts/" + updateId;
+////
+////        //when
+////        mvc.perform(put(url)
+////                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+////                        .content(new ObjectMapper().writeValueAsString(requestDto)))
+////                .andExpect(status().isOk());
+////
+////        //then
+////        List<Attendance> all = attendancRepository.findAll();
+////        assertThat(all.get(0).getUserNoId()).isEqualTo(userNoId);
+////        assertThat(all.get(0).getAttendanceOX()).isEqualTo(attendanceOX);
+////        assertThat(all.get(0).getAttendanceDate()).isEqualTo(attendanceDate);
+////        assertThat(all.get(0).getAttendanceTimeEnd()).isEqualTo(attendanceTimeEnd);
+////        assertThat(all.get(0).getAttendanceTimeStart()).isEqualTo(attendanceTimeStart);
+////        assertThat(all.get(0).getAttendanceTimeHours()).isEqualTo(attendanceTimeHours);
+////        assertThat(all.get(0).getAttendanceAddressLatitude()).isEqualTo(attendanceAddressLatitude);
+////        assertThat(all.get(0).getAttendanceAddressHardness()).isEqualTo(attendanceAddressHardness);
+////    }
 //}

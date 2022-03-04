@@ -5,19 +5,17 @@ import com.jojoldu.book.springboot.domain.company.Company;
 import com.jojoldu.book.springboot.domain.company.CompanyRepository;
 import com.jojoldu.book.springboot.web.dto.company.CompanySaveRequestDto;
 import com.jojoldu.book.springboot.web.dto.company.CompanyUpdateRequestDto;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-//import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.*;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.MediaType;
-//import org.springframework.restdocs.JUnitRestDocumentation;
-//import org.springframework.restdocs.RestDocumentationExtension;
+import org.springframework.restdocs.JUnitRestDocumentation;
+import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -27,8 +25,11 @@ import org.springframework.web.context.WebApplicationContext;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-//import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -36,7 +37,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 // For mockMvc
 
 @RunWith(SpringRunner.class)
-//@ExtendWith(RestDocumentationExtension.class)
+@ExtendWith(RestDocumentationExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CompanyApiControllerTest {
 
@@ -52,26 +53,21 @@ public class CompanyApiControllerTest {
     @Autowired
     private WebApplicationContext context;
 
-
     private MockMvc mvc;
 
-//    @Rule
-//    public JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation();
-//
+    @Rule
+    public JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation();
+
     @Before
-    public void setup() {
-        mvc = MockMvcBuilders
+    public void setUp() {
+//        this.mvc = MockMvcBuilders.webAppContextSetup(this.context)
+//                .apply(documentationConfiguration(this.restDocumentation))
+//                .build();
+                mvc = MockMvcBuilders
                 .webAppContextSetup(context)
                 .apply(springSecurity())
                 .build();
     }
-
-//    @Before
-//    public void setUp() {
-//        this.mvc = MockMvcBuilders.webAppContextSetup(this.context)
-//                .apply(documentationConfiguration(this.restDocumentation))
-//                .build();
-//    }
 
     @After
     public void tearDown() throws Exception {
@@ -96,9 +92,10 @@ public class CompanyApiControllerTest {
 
         //when
         mvc.perform(post(url)
-                .contentType(MediaType.APPLICATION_JSON_UTF8)
-                .content(new ObjectMapper().writeValueAsString(requestDto)))
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .content(new ObjectMapper().writeValueAsString(requestDto)))
                 .andExpect(status().isOk());
+
 
         //then
         List<Company> all = companyRepository.findAll();
@@ -142,12 +139,6 @@ public class CompanyApiControllerTest {
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(new ObjectMapper().writeValueAsString(requestDto)))
                 .andExpect(status().isOk());
-//        //when
-//        mvc.perform(put(url)
-//                        .contentType(MediaType.APPLICATION_JSON_UTF8)
-//                        .content(new ObjectMapper().writeValueAsString(requestDto)))
-//
-//                .andExpect(status().isOk());
 
 
         //then

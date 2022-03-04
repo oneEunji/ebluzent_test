@@ -7,7 +7,7 @@ import lombok.Getter;
 import java.sql.Date;
 
 @Getter
-public class LaptopdoorResponseDto {
+public class LaptopDoorResponseDto {
 
     private Long laptopDoorId;
     private Long userNoId;
@@ -16,7 +16,7 @@ public class LaptopdoorResponseDto {
     private int doorOpen;
 
 
-    public LaptopdoorResponseDto(LaptopDoor entity) {
+    public LaptopDoorResponseDto(LaptopDoor entity) {
         this.laptopDoorId = entity.getLaptopDoorId();
         this.userNoId = entity.getUserNoId();
         this.ssaId = entity.getSsaId();

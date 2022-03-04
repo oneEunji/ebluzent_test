@@ -9,7 +9,7 @@ import java.sql.Date;
 
 @Getter
 @NoArgsConstructor
-public class LaptopdoorUpdateRequestDto {
+public class LaptopDoorUpdateRequestDto {
     private Long laptopDoorId;
     private Long userNoId;
     private String ssaId;
@@ -17,7 +17,7 @@ public class LaptopdoorUpdateRequestDto {
     private int doorOpen;
 
     @Builder
-    public LaptopdoorUpdateRequestDto(Long laptopDoorId, Long userNoId, String ssaId,
+    public LaptopDoorUpdateRequestDto(Long laptopDoorId, Long userNoId, String ssaId,
                                       Date doorOpenTime, int doorOpen) {
         this.laptopDoorId = laptopDoorId;
         this.userNoId = userNoId;

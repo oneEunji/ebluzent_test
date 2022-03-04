@@ -26,20 +26,20 @@ public class AttendanceApiController {
         return attendanceService.save(requestDto);
     }
 
-    @PutMapping("/api/v1/attendance/{id}")
-    public Long update(@PathVariable Long id, @RequestBody AttendanceUpdateRequestDto requestDto) {
-        return attendanceService.update(id, requestDto);
+    @PutMapping("/api/v1/attendance/{attendanceId}")
+    public Long update(@PathVariable Long attendanceId, @RequestBody AttendanceUpdateRequestDto requestDto) {
+        return attendanceService.update(attendanceId, requestDto);
     }
 
-    @DeleteMapping("/api/v1/attendance/{id}")
-    public Long delete(@PathVariable Long id) {
-        attendanceService.delete(id);
-        return id;
-    }
+//    @DeleteMapping("/api/v1/attendance/{attendanceId}")
+//    public Long delete(@PathVariable Long attendanceId) {
+//        attendanceService.delete(attendanceId);
+//        return attendanceId;
+//    }
 
-    @GetMapping("/api/v1/attendance/{id}")
-    public AttendanceResponseDto findById(@PathVariable Long id) {
-        return attendanceService.findById(id);
+    @GetMapping("/api/v1/attendance/{attendanceId}")
+    public AttendanceResponseDto findById(@PathVariable Long attendanceId) {
+        return attendanceService.findById(attendanceId);
     }
 
     @GetMapping("/api/v1/attendance/list")
