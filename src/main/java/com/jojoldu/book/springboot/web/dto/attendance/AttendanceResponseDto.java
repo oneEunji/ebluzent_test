@@ -4,6 +4,7 @@ import com.jojoldu.book.springboot.domain.attendance.Attendance;
 import lombok.Getter;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Getter
 public class AttendanceResponseDto {
@@ -13,7 +14,7 @@ public class AttendanceResponseDto {
     private Long companyBranchId;
     private Long companyId;
     private String attendanceOX;
-    private Date attendanceDate;
+    private LocalDateTime attendanceDate;
     private String attendanceTimeEnd;
     private String attendanceTimeStart;
     private String attendanceTimeHours;

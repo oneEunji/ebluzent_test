@@ -26,7 +26,7 @@ public class LaptopDoor extends BaseTimeEntity {
     @Column(length = 500, nullable = false)
     private String ssaId;
 
-    @Column(nullable = false)
+    @Column
     private Date doorOpenTime;
 
     @Builder

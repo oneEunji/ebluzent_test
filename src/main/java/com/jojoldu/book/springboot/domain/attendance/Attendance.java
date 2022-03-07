@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor
@@ -32,8 +33,8 @@ public class Attendance extends BaseTimeEntity {
     @Column(length = 500, nullable = false)
     private String attendanceOX;
 
-    @Column(length = 500, nullable = false)
-    private Date attendanceDate;
+    @Column
+    private LocalDateTime attendanceDate;
 
     @Column(length = 500, nullable = false)
     private String attendanceTimeEnd;
@@ -51,7 +52,7 @@ public class Attendance extends BaseTimeEntity {
     private Double attendanceAddressHardness;
 
     @Builder
-    public Attendance(Long userNoId, String attendanceOX, Date attendanceDate, String attendanceTimeEnd, String attendanceTimeStart,
+    public Attendance(Long userNoId, String attendanceOX, LocalDateTime attendanceDate, String attendanceTimeEnd, String attendanceTimeStart,
                       String attendanceTimeHours, Double attendanceAddressLatitude, Double attendanceAddressHardness){
         this.userNoId = userNoId;
         this.attendanceOX = attendanceOX;
@@ -63,7 +64,7 @@ public class Attendance extends BaseTimeEntity {
         this.attendanceAddressHardness = attendanceAddressHardness;
     }
 
-    public void update(Long userNoId,String attendanceOX,Date attendanceDate,String attendanceTimeEnd,String attendanceTimeStart,
+    public void update(Long userNoId,String attendanceOX,LocalDateTime attendanceDate,String attendanceTimeEnd,String attendanceTimeStart,
                        String attendanceTimeHours,Double attendanceAddressLatitude,Double attendanceAddressHardness){
         this.userNoId = userNoId;
         this.attendanceOX = attendanceOX;

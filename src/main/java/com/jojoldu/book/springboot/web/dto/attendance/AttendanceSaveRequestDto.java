@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor
@@ -17,7 +18,7 @@ public class AttendanceSaveRequestDto {
     private Long companyBranchId;
     private Long companyId;
     private String attendanceOX;
-    private Date attendanceDate;
+    private LocalDateTime attendanceDate;
     private String attendanceTimeEnd;
     private String attendanceTimeStart;
     private String attendanceTimeHours;
@@ -27,7 +28,7 @@ public class AttendanceSaveRequestDto {
 
     @Builder
     public AttendanceSaveRequestDto(Long userNoId, Long deptId, Long companyBranchId, Long companyId,
-                                    String attendanceOX, Date attendanceDate, String attendanceTimeEnd, String attendanceTimeStart,
+                                    String attendanceOX, LocalDateTime attendanceDate, String attendanceTimeEnd, String attendanceTimeStart,
                                     String attendanceTimeHours, Double attendanceAddressLatitude, Double attendanceAddressHardness) {
         this.userNoId =  userNoId;
         this.deptId =  deptId;

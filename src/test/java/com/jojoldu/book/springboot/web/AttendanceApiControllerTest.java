@@ -3,12 +3,7 @@
 //import com.fasterxml.jackson.databind.ObjectMapper;
 //import com.jojoldu.book.springboot.domain.attendance.Attendance;
 //import com.jojoldu.book.springboot.domain.attendance.AttendanceRepository;
-//import com.jojoldu.book.springboot.domain.posts.Posts;
-//import com.jojoldu.book.springboot.domain.posts.PostsRepository;
-//import com.jojoldu.book.springboot.web.dto.PostsSaveRequestDto;
-//import com.jojoldu.book.springboot.web.dto.PostsUpdateRequestDto;
 //import com.jojoldu.book.springboot.web.dto.attendance.AttendanceSaveRequestDto;
-//import com.jojoldu.book.springboot.web.dto.attendance.AttendanceUpdateRequestDto;
 //import org.junit.After;
 //import org.junit.Before;
 //import org.junit.Test;
@@ -24,14 +19,14 @@
 //import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 //import org.springframework.web.context.WebApplicationContext;
 //
-//import java.sql.Date;
+//import java.time.LocalDateTime;
 //import java.util.List;
 //
 //import static org.assertj.core.api.Assertions.assertThat;
 //import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 //import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-//import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 //import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+//
 //
 //
 //@RunWith(SpringRunner.class)
@@ -45,7 +40,7 @@
 //    private TestRestTemplate restTemplate;
 //
 //    @Autowired
-//    private AttendanceRepository attendancRepository;
+//    private AttendanceRepository attendanceRepository;
 //
 //    @Autowired
 //    private WebApplicationContext context;
@@ -62,19 +57,20 @@
 //
 //    @After
 //    public void tearDown() throws Exception {
-//        attendancRepository.deleteAll();
+//        attendanceRepository.deleteAll();
 //    }
 //
 //    @Test
 //    @WithMockUser(roles = "USER")
 //    public void Attendance_등록된다() throws Exception {
 //        //given
-//        Long userNoId = null;
-//        Long deptId = null;
-//        Long companyBranchId = null;
-//        Long companyId = null;
+//        Long userNoId = 1L;
+//        Long deptId = 1L;
+//        Long companyBranchId = 1L;
+//        Long companyId = 1L;
 //        String attendanceOX = "attendanceOX";
-//        Date attendanceDate = null;
+//        LocalDateTime attendanceDate = null;
+////        Date attendanceDate = Date.valueOf(dateByAttendence);
 //        String attendanceTimeEnd = "attendanceTimeEnd";
 //        String attendanceTimeStart = "attendanceTimeStart";
 //        String attendanceTimeHours = "attendanceTimeHours";
@@ -105,7 +101,7 @@
 //                .andExpect(status().isOk());
 //
 //        //then
-//        List<Attendance> all = attendancRepository.findAll();
+//        List<Attendance> all = attendanceRepository.findAll();
 //        assertThat(all.get(0).getUserNoId()).isEqualTo(userNoId);
 //        assertThat(all.get(0).getDeptId()).isEqualTo(deptId);
 //        assertThat(all.get(0).getCompanyBranchId()).isEqualTo(companyBranchId);
@@ -178,3 +174,4 @@
 ////        assertThat(all.get(0).getAttendanceAddressHardness()).isEqualTo(attendanceAddressHardness);
 ////    }
 //}
+////출근시간,출근 위치 퇴근시간 퇴근 위치

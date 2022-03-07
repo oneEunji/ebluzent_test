@@ -34,7 +34,7 @@ public class AttendanceService {
         Attendance attendance = attendanceRepository.findById(attendanceId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 순번이 없습니다. no=" + attendanceId));
 
-//        attendance.update(requestDto.getAttendanceOX());
+//        attendance.update(requestDto.getAttendanceTimeStart());
 
         return attendanceId;
     }

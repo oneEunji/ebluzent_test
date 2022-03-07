@@ -23,23 +23,13 @@ public class LaptopDoorService {
         return laptopDoorRepository.save(requestDto.toEntity()).getLaptopDoorId();
     }
 
-//    @Transactional
-//    public Long update(Long laptopDoorId, LaptopDoorUpdateRequestDto requestDto) {
-//        LaptopDoor laptopDoor = LaptopDoorRepository.findById(laptopDoorId)
-//                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + laptopDoorId));
-//
-////        laptopDoor.update(requestDto.getTitle(), requestDto.getContent());
-//
-//        return laptopDoorId;
-//    }
+    @Transactional
+    public void delete (Long laptopDoorId) {
+        LaptopDoor laptopDoor = laptopDoorRepository.findById(laptopDoorId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + laptopDoorId));
 
-//    @Transactional
-//    public void delete (Long laptopDoorId) {
-//        LaptopDoor laptopDoor = laptopDoorRepository.findById(laptopDoorId)
-//                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + laptopDoorId));
-//
-//        laptopDoorRepository.delete(laptopDoor);
-//    }
+        laptopDoorRepository.delete(laptopDoor);
+    }
 
     @Transactional(readOnly = true)
     public LaptopDoorResponseDto findById(Long laptopDoorId) {

@@ -11,16 +11,15 @@ import java.sql.Date;
 @Getter
 @NoArgsConstructor
 public class LaptopDoorSaveRequestDto {
-    private Long laptopDoorId;
     private Long userNoId;
     private String ssaId;
     private Date doorOpenTime;
     private int doorOpen;
 
     @Builder
-    public LaptopDoorSaveRequestDto(Long laptopDoorId, Long userNoId, String ssaId,
+    public LaptopDoorSaveRequestDto(Long userNoId, String ssaId,
                                     Date doorOpenTime, int doorOpen) {
-        this.laptopDoorId = laptopDoorId;
+
         this.userNoId = userNoId;
         this.ssaId = ssaId;
         this.doorOpenTime = doorOpenTime;
