@@ -1,8 +1,8 @@
 package com.jojoldu.book.springboot.domain.users;
 
 import com.jojoldu.book.springboot.domain.BaseTimeEntity;
-import com.jojoldu.book.springboot.domain.user.Role;
-import com.jojoldu.book.springboot.domain.user.User;
+//import com.jojoldu.book.springboot.domain.user.Role;
+//import com.jojoldu.book.springboot.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -51,6 +51,13 @@ public class Users extends BaseTimeEntity {
             this.userPosition = userPosition;
             this.companyId = companyId;
 
+    }
+
+    @Builder
+    public Users(String userName, String userEmail) {
+
+        this.userName = userName;
+        this.userEmail = userEmail;
     }
 
     public Users update(String userName, String userEmail, String userPassword,

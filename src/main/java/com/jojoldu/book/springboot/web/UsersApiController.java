@@ -1,5 +1,6 @@
 package com.jojoldu.book.springboot.web;
 
+import com.jojoldu.book.springboot.domain.users.Users;
 import com.jojoldu.book.springboot.service.PostsService;
 import com.jojoldu.book.springboot.service.users.UsersService;
 import com.jojoldu.book.springboot.web.dto.PostsListResponseDto;
