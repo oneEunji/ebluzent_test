@@ -3,17 +3,24 @@ package com.jojoldu.book.springboot.web;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jojoldu.book.springboot.domain.posts.Posts;
 import com.jojoldu.book.springboot.domain.posts.PostsRepository;
+import com.jojoldu.book.springboot.service.PostsService;
+import com.jojoldu.book.springboot.web.dto.PostsResponseDto;
 import com.jojoldu.book.springboot.web.dto.PostsSaveRequestDto;
 import com.jojoldu.book.springboot.web.dto.PostsUpdateRequestDto;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.MediaType;
+import org.springframework.restdocs.JUnitRestDocumentation;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -24,12 +31,12 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 // For mockMvc
-
+@AutoConfigureMockMvc // -> webAppContextSetup(webApplicationContext)
+@AutoConfigureRestDocs // -> apply(documentationConfiguration(restDocumentation))
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class PostsApiControllerTest {
@@ -47,6 +54,10 @@ public class PostsApiControllerTest {
     private WebApplicationContext context;
 
     private MockMvc mvc;
+
+    @MockBean
+    private PostsService postService;
+
 
     @Before
     public void setup() {
@@ -75,6 +86,7 @@ public class PostsApiControllerTest {
 
         String url = "http://localhost:" + port + "/api/v1/posts";
 
+
         //when
         mvc.perform(post(url)
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
@@ -82,11 +94,10 @@ public class PostsApiControllerTest {
                 .andExpect(status().isOk());
 
         //then
-        List<Posts> all = postsRepository.findAll();
+        List<Posts> all = postsRepository.findAllDesc();
         assertThat(all.get(0).getTitle()).isEqualTo(title);
         assertThat(all.get(0).getContent()).isEqualTo(content);
     }
-
     @Test
     @WithMockUser(roles="USER")
     public void Posts_수정된다() throws Exception {
@@ -98,8 +109,8 @@ public class PostsApiControllerTest {
                 .build());
 
         Long updateId = savedPosts.getId();
-        String expectedTitle = "title2";
-        String expectedContent = "content2";
+        String expectedTitle = "title";
+        String expectedContent = "content";
 
         PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder()
                 .title(expectedTitle)

@@ -28,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class HelloRestControllerTest {
 
     @Rule
-    public JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation(); // (1)
+    public JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation();
 
     private MockMvc mockMvc;
 
@@ -37,7 +37,7 @@ public class HelloRestControllerTest {
 
 
     @Before
-    public void setUp() { // (2)
+    public void setUp() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
                 .apply(documentationConfiguration(this.restDocumentation))
                 .build();
@@ -56,6 +56,6 @@ public class HelloRestControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())  // then
                 .andExpect(jsonPath("$.userName").value(userName))
-                .andDo(document("hello")); // (3)
+                .andDo(document("hello"));
     }
 }

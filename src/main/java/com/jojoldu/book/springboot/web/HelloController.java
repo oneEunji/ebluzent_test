@@ -1,9 +1,8 @@
 package com.jojoldu.book.springboot.web;
 
 import com.jojoldu.book.springboot.web.dto.HelloResponseDto;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.jojoldu.book.springboot.web.dto.PostsUpdateRequestDto;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloController {

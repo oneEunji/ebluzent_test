@@ -1,11 +1,14 @@
 package com.jojoldu.book.springboot.web;
 
+import com.jojoldu.book.springboot.domain.posts.Posts;
+import com.jojoldu.book.springboot.domain.users.Users;
 import com.jojoldu.book.springboot.service.PostsService;
 import com.jojoldu.book.springboot.web.dto.PostsListResponseDto;
 import com.jojoldu.book.springboot.web.dto.PostsResponseDto;
 import com.jojoldu.book.springboot.web.dto.PostsSaveRequestDto;
 import com.jojoldu.book.springboot.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
